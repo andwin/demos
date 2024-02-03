@@ -5,4 +5,3 @@ function setup() {
 function draw() {
   circle(random(width), random(height), random(50))
 }
-
