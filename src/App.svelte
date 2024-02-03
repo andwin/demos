@@ -3,12 +3,12 @@
     {
       title: 'Lines',
       description: 'Drawing random lines on a canvas',
-      link: '/src/lines/'
+      link: './src/lines/'
     },
     {
       title: 'Circes',
       description: 'Drawing random circles on a canvas',
-      link: '/src/circles/'
+      link: './src/circles/'
     }
   ]
 </script>
