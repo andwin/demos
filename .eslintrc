@@ -16,6 +16,8 @@
   },
 
   "ignorePatterns": [
-    "dist/"
+    "dist/",
+    "*.config.js",
+    "*.config.ts"
   ]
 }
