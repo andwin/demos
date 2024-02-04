@@ -8,7 +8,7 @@
     "build": "vite build && copyfiles src/*/* dist",
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
-    "test": "eslint ."
+    "test": "eslint . && npm run build"
   },
   "devDependencies": {
     "@andwin/eslint-config": "^0.0.15",
