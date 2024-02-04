@@ -3,28 +3,28 @@
     {
       title: 'Lines',
       description: 'Drawing random lines on a canvas',
-      link: './src/lines/'
+      link: './src/lines/',
     },
     {
       title: 'Circes',
       description: 'Drawing random circles on a canvas',
-      link: './src/circles/'
+      link: './src/circles/',
     },
     {
       title: 'Circes',
       description: 'Drawing random circles on a canvas',
-      link: './src/circles/'
+      link: './src/circles/',
     },
     {
       title: 'Circes',
       description: 'Drawing random circles on a canvas',
-      link: './src/circles/'
+      link: './src/circles/',
     },
     {
       title: 'Circes',
       description: 'Drawing random circles on a canvas',
-      link: './src/circles/'
-    }
+      link: './src/circles/',
+    },
   ]
 </script>
 
@@ -37,7 +37,7 @@
         <a href={demo.link} class="card">
           <h2>{demo.title}</h2>
           <p>{demo.description}</p>
-          <img src={demo.link + 'preview.png'} alt={demo.title} />
+          <img src={`${demo.link}preview.png`} alt={demo.title} />
         </a>
       </div>
     {/each}
