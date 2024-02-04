@@ -13,15 +13,17 @@ const numberOfDrops = 100
 const drops = []
 
 function setup() {
-  createCanvas(800, 600)
+  createCanvas(window.innerWidth, window.innerHeight)
   background = createBackground()
 
+  drops.length = 0
   for (let i = 0; i < numberOfDrops; i++) {
     const drop = {}
     initDrop(drop)
     drops.push(drop)
   }
 }
+window.onresize = setup
 
 function draw() {
   image(background, 0, 0)
