@@ -11,7 +11,7 @@
     "test": "eslint . && npm run build"
   },
   "devDependencies": {
-    "@andwin/eslint-config": "^0.0.15",
+    "@andwin/eslint-config": "^0.0.16",
     "@sveltejs/vite-plugin-svelte": "^3.0.1",
     "@tsconfig/svelte": "^5.0.2",
     "copyfiles": "^2.4.1",
