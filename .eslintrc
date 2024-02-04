@@ -1,6 +1,7 @@
 {
   "extends": [
     "@andwin/eslint-config",
+    "plugin:svelte/recommended",
     "plugin:p5js/p5"
   ],
 
