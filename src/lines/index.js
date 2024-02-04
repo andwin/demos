@@ -5,4 +5,3 @@ function setup() {
 function draw() {
   line(random(width), random(height), random(width), random(height))
 }
-
