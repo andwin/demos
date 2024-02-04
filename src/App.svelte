@@ -1,6 +1,11 @@
 <script lang="ts">
   const demos = [
     {
+      title: 'Rain',
+      description: 'Rain effect. With wind',
+      link: './src/rain/',
+    },
+    {
       title: 'Lines',
       description: 'Drawing random lines on a canvas',
       link: './src/lines/',
