@@ -2,32 +2,26 @@
   const demos = [
     {
       title: 'Rain',
-      description: 'Rain effect. With wind',
       link: './src/rain/',
     },
     {
       title: 'Lines',
-      description: 'Drawing random lines on a canvas',
       link: './src/lines/',
     },
     {
       title: 'Circes',
-      description: 'Drawing random circles on a canvas',
       link: './src/circles/',
     },
     {
       title: 'Circes',
-      description: 'Drawing random circles on a canvas',
       link: './src/circles/',
     },
     {
       title: 'Circes',
-      description: 'Drawing random circles on a canvas',
       link: './src/circles/',
     },
     {
       title: 'Circes',
-      description: 'Drawing random circles on a canvas',
       link: './src/circles/',
     },
   ]
@@ -41,7 +35,6 @@
       <div>
         <a href={demo.link} class="card">
           <h2>{demo.title}</h2>
-          <p>{demo.description}</p>
           <img src={`${demo.link}preview.png`} alt={demo.title} />
         </a>
       </div>
