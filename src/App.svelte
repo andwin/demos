@@ -1,6 +1,10 @@
 <script lang="ts">
   const demos = [
     {
+      title: 'Clouds',
+      link: './src/clouds/',
+    },
+    {
       title: 'Rain',
       link: './src/rain/',
     },
