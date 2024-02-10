@@ -1,29 +1,56 @@
-const size = 5
+const xSpeed = 2
+const ySpeed = 1
+
 const noiseScale = 0.008
 let t = 0.0
-let graphics
+let graphics1
+let graphics2
 
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight)
 
-  graphics = createGraphics(window.innerWidth, window.innerHeight)
-  graphics.noStroke()
+  graphics1 = createGraphics(window.innerWidth, window.innerHeight)
+  graphics2 = createGraphics(window.innerWidth, window.innerHeight)
+  graphics1.noStroke()
+  graphics2.noStroke()
+
+  initGraphics(graphics2)
 }
 window.onresize = setup
 
 function draw() {
   t += 0.015
 
-  for (let x = 0; x < width; x += size) {
-    for (let y = 0; y < height; y += size) {
-      const noiseValue = noise(t + x * noiseScale, t * 0.5 - y * noiseScale)
-      const c = colorForNoiseValue(noiseValue)
-      graphics.fill(c)
-      graphics.rect(x, y, size, size)
+  graphics1.image(graphics2, -xSpeed, ySpeed)
+
+  for (let x = 0; x < width; x++) {
+    drawPixel(graphics1, x, 0)
+  }
+  for (let x = width - xSpeed; x < width; x++) {
+    for (let y = 0; y < height; y++) {
+      drawPixel(graphics1, x, y)
     }
   }
+  graphics1.updatePixels()
 
-  image(graphics, 0, 0)
+  graphics2.image(graphics1, 0, 0)
+  image(graphics2, 0, 0)
+}
+
+const initGraphics = (gfx) => {
+  for (let x = 0; x < width; x++) {
+    for (let y = 0; y < height; y++) {
+      drawPixel(gfx, x, y)
+    }
+  }
+  gfx.updatePixels()
+}
+
+const drawPixel = (gfx, x, y) => {
+  const noiseValue = noise(t + x * noiseScale, t * 0.5 - y * noiseScale)
+
+  const c = colorForNoiseValue(noiseValue)
+  gfx.set(x, y, c)
 }
 
 const colorForNoiseValue = (noiseValue) => {
