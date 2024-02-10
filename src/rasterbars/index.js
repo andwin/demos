@@ -13,7 +13,6 @@ window.onresize = setup
 
 function draw() {
   background(10, 9, 12)
-  noStroke()
 
   for (let i = 0; i < numberOfBars; i++) {
     const y = sin(frameCount * speed + i * dx) * amplitude + window.innerHeight / 2
