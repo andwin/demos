@@ -1,6 +1,10 @@
 <script lang="ts">
   const demos = [
     {
+      title: 'Horizontal raster bars',
+      link: './src/rasterbars/',
+    },
+    {
       title: 'Clouds',
       link: './src/clouds/',
     },
