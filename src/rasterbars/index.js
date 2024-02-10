@@ -12,15 +12,25 @@ function setup() {
 window.onresize = setup
 
 function draw() {
-  background('#6F9CDE')
-  fill(255)
+  background(10, 9, 12)
+  noStroke()
 
   for (let i = 0; i < numberOfBars; i++) {
-    // yValues[i] = random(window.innerHeight)
-    // yValues[i] = map(sin(frameCount * 0.05 + i * 0.5), -1, 1, 0, window.innerHeight)
-    // const x = i * window.innerWidth / numberOfBars
     const y = sin(frameCount * speed + i * dx) * amplitude + window.innerHeight / 2
-
-    rect(0, y, width, barHeight)
+    gradientRect(0, y, width, barHeight, color(255, 71, 218), color(143, 0, 114))
   }
+}
+
+const gradientRect = (x, y, w, h, color1, color2) => {
+  const ctx = canvas.getContext('2d')
+  const gradient = ctx.createLinearGradient(0, y, 0, y + h)
+
+  gradient.addColorStop(0, color2)
+  gradient.addColorStop(0.45, color1)
+  gradient.addColorStop(0.55, color1)
+  gradient.addColorStop(1, color2)
+
+  ctx.fillStyle = gradient
+
+  rect(x, y, w, h)
 }
