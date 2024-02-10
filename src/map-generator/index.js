@@ -3,38 +3,34 @@ const ySpeed = 1
 
 const noiseScale = 0.008
 let t = 0.0
-let graphics1
-let graphics2
+let graphics
 
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight)
 
-  graphics1 = createGraphics(window.innerWidth, window.innerHeight)
-  graphics2 = createGraphics(window.innerWidth, window.innerHeight)
-  graphics1.noStroke()
-  graphics2.noStroke()
+  graphics = createGraphics(window.innerWidth, window.innerHeight)
+  graphics.noStroke()
 
-  initGraphics(graphics2)
+  initGraphics(graphics)
 }
 window.onresize = setup
 
 function draw() {
   t += 0.015
 
-  graphics1.image(graphics2, -xSpeed, ySpeed)
+  graphics.image(graphics, -xSpeed, ySpeed)
 
   for (let x = 0; x < width; x++) {
-    drawPixel(graphics1, x, 0)
+    drawPixel(graphics, x, 0)
   }
   for (let x = width - xSpeed; x < width; x++) {
     for (let y = 0; y < height; y++) {
-      drawPixel(graphics1, x, y)
+      drawPixel(graphics, x, y)
     }
   }
-  graphics1.updatePixels()
+  graphics.updatePixels()
 
-  graphics2.image(graphics1, 0, 0)
-  image(graphics2, 0, 0)
+  image(graphics, 0, 0)
 }
 
 const initGraphics = (gfx) => {
