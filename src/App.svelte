@@ -1,6 +1,10 @@
 <script lang="ts">
   const demos = [
     {
+      title: 'Map generator',
+      link: './src/map-generator/',
+    },
+    {
       title: 'Horizontal raster bars',
       link: './src/rasterbars/',
     },
