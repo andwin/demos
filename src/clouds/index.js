@@ -21,7 +21,7 @@ function draw() {
 
   for (let x = 0; x < width; x += size) {
     for (let y = 0; y < height; y += size) {
-      const r = 255 * noise(t + x * noiseScale, y * noiseScale, frameCount * speedScale)
+      const r = (8 * noise(t + x * noiseScale, y * noiseScale, frameCount * speedScale)) ** 2.8
 
       const c = color(255, r)
 
