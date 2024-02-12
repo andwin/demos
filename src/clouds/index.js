@@ -2,17 +2,20 @@ const size = 5
 const noiseScale = 0.008
 const speedScale = 0.005
 let t = 0.0
+let graphics
 
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight)
 
   frameRate(20)
-  noStroke()
+
+  graphics = createGraphics(window.innerWidth, window.innerHeight)
+  graphics.noStroke()
 }
 window.onresize = setup
 
 function draw() {
-  background('#6F9CDE')
+  graphics.background('#6F9CDE')
 
   t += 0.01
 
@@ -22,8 +25,10 @@ function draw() {
 
       const c = color(255, r)
 
-      fill(c)
-      rect(x, y, size, size)
+      graphics.fill(c)
+      graphics.rect(x, y, size, size)
     }
   }
+
+  image(graphics, 0, 0)
 }
