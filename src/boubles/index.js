@@ -1,14 +1,17 @@
 let background
 
-const spacing = 3
-const numberOfBoubles = 10
+const gravityConstant = 0.9
+const forceConstant = 600
+
+const numberOfBoubles = 30
 const boubles = []
 const sizes = [20, 40, 60]
 const colors = ['#FF7E2C', '#AEBC98', '#FED8A8']
 
-const createBoublesInterval = 300
+const magThreshold = 0.15
+const createBoublesInterval = 200
 let createBoublesIntervalId
-const resetBooublesTimeout = 3000
+const resetBooublesTimeout = 1000
 let resetBooublesTimeoutId
 
 function setup() {
@@ -25,12 +28,16 @@ window.onresize = setup
 function draw() {
   image(background, 0, 0)
 
+  applyForces()
+
+  let maxMag = 0
   for (const bouble of boubles) {
     drawBouble(bouble)
+    const mag = moveBouble(bouble)
+    if (mag > maxMag) maxMag = mag
   }
 
-  const moved = moveBoubles()
-  if (!moved) {
+  if (maxMag < magThreshold) {
     if (!resetBooublesTimeoutId) {
       resetBooublesTimeoutId = setTimeout(initBoubles, resetBooublesTimeout)
     }
@@ -56,52 +63,46 @@ const initBoubles = () => {
 const createBouble = () => {
   const f = 0.02
 
+  const x = random(width / 2 - width * f, width / 2 + width * f)
+  const y = random(height / 2 - height * f, height / 2 + height * f)
   const bouble = {}
-  bouble.x = random(width / 2 - width * f, width / 2 + width * f)
-  bouble.y = random(height / 2 - height * f, height / 2 + height * f)
+  bouble.position = createVector(x, y)
   bouble.size = random(sizes)
   bouble.color = random(colors)
   return bouble
 }
 
-const drawBouble = (bouble) => {
-  fill(bouble.color)
-  ellipse(bouble.x, bouble.y, bouble.size)
-}
-
-const moveBoubles = () => {
-  let movedBoubles = false
+const applyForces = () => {
+  const center = createVector(width / 2, height / 2)
 
   for (const bouble of boubles) {
-    // Find boubles that overlap
-    for (const other of boubles) {
-      if (bouble !== other && dist(bouble.x, bouble.y, other.x, other.y) < bouble.size / 2 + other.size / 2 + spacing) {
-        const dx = bouble.x - other.x
-        const dy = bouble.y - other.y
-        const moveX = dx < bouble.size / 2 + other.size / 2 + spacing
-        const moveY = dy < bouble.size / 2 + other.size / 2 + spacing
-
-        if (moveX) {
-          bouble.x += pixelsToMove(dx)
-        }
-        if (moveY) {
-          bouble.y += pixelsToMove(dy)
-        }
-
-        if (moveX || moveY) {
-          movedBoubles = true
-          break
-        }
-      }
-    }
+    bouble.force = center.copy().sub(bouble.position).mult(gravityConstant)
   }
 
-  return movedBoubles
+  for (const bouble of boubles) {
+    for (const other of boubles) {
+      if (bouble === other) continue
+
+      const direction = other.position.copy().sub(bouble.position)
+      const force = direction.div(direction.mag() * direction.mag()).mult(forceConstant)
+
+      bouble.force.add(force.copy().mult(-1))
+      other.force.add(force)
+    }
+  }
 }
 
-const pixelsToMove = (d) => {
-  const move = 5 * Math.abs(d) ** -0.2
-  return d > 0 ? move : -move
+const drawBouble = (bouble) => {
+  fill(bouble.color)
+  ellipse(bouble.position.x, bouble.position.y, bouble.size)
+}
+
+const moveBouble = (bouble) => {
+  const force = bouble.force.copy()
+  const velocity = force.copy().div(bouble.size / 2)
+  bouble.position.add(velocity)
+
+  return velocity.mag()
 }
 
 const createBackground = () => {
