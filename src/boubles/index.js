@@ -110,14 +110,14 @@ const createBackground = () => {
   const color2 = color('#1A1423')
 
   const bg = createGraphics(width, height)
+  const ctx = bg.canvas.getContext('2d')
 
-  bg.noFill()
-  for (let i = 0; i <= height; i++) {
-    const inter = map(i, 0, height, 0, 1)
-    const c = lerpColor(color1, color2, inter)
-    bg.stroke(c)
-    bg.line(0, i, width, i)
-  }
+  const gradient = ctx.createRadialGradient(width / 2, height / 2, height / 2, width / 2, height / 2, 100)
 
+  gradient.addColorStop(0, color1)
+  gradient.addColorStop(1, color2)
+
+  ctx.fillStyle = gradient
+  bg.rect(0, 0, width, height)
   return bg
 }
