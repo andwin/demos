@@ -1,6 +1,10 @@
 <script lang="ts">
   const demos = [
     {
+      title: 'Boubles',
+      link: './src/boubles/',
+    },
+    {
       title: 'Map generator',
       link: './src/map-generator/',
     },
