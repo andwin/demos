@@ -2,7 +2,7 @@
 let background
 
 const gravityConstant = 1.1
-let boubles = []
+let circles = []
 const logoColor = '#FF7E2C'
 
 const magThreshold = 0.15
@@ -14,25 +14,25 @@ function setup() {
 
   frameRate(20)
 
-  initBoubles()
+  initCircles()
 }
 window.onresize = setup
 
 function draw() {
   translate(width / 2, height / 2)
 
-  drawBoubles()
+  drawCircles()
 
   let maxMag = 0
-  for (const bouble of boubles) {
-    const mag = moveBouble(bouble)
+  for (const circle of circles) {
+    const mag = moveBouble(circle)
     if (mag > maxMag) maxMag = mag
   }
 
-  if (maxMag < magThreshold) initBoubles()
+  if (maxMag < magThreshold) initCircles()
 }
 
-const initBoubles = () => {
+const initCircles = () => {
   const bigCircle = {
     position: createVector(-width, -height),
     target: createVector(-10, -10),
@@ -44,11 +44,11 @@ const initBoubles = () => {
     size: 50,
   }
 
-  boubles = [bigCircle, smallCircle]
+  circles = [bigCircle, smallCircle]
 }
 
-const drawBoubles = () => {
-  const [largeCircle, smallCircle] = boubles
+const drawCircles = () => {
+  const [largeCircle, smallCircle] = circles
 
   image(background, -width / 2, -height / 2)
   fill(logoColor)
