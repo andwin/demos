@@ -1,12 +1,12 @@
 /* eslint-disable no-undef */
 const particles = []
 const noiseScale = 0.01
-const speed = 4
+const speed = 3
 let bgColor
 
 function setup() {
   bgColor = color('#1A1B3E')
-  bgColor.setAlpha(40)
+  bgColor.setAlpha(10)
 
   createCanvas(window.innerWidth, window.innerHeight)
 
