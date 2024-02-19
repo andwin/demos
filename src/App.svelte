@@ -1,6 +1,10 @@
 <script lang="ts">
   const demos = [
     {
+      title: 'Rektron logo',
+      link: './src/rektron/',
+    },
+    {
       title: 'Boubles',
       link: './src/boubles/',
     },
