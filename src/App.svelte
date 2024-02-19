@@ -1,6 +1,10 @@
 <script lang="ts">
   const demos = [
     {
+      title: 'Flow field',
+      link: './src/flowfield/',
+    },
+    {
       title: 'Rektron logo',
       link: './src/rektron/',
     },
