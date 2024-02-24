@@ -2,9 +2,12 @@ let sections = []
 let gfx
 let layer
 let msk
+let maxSize
 
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight)
+
+  maxSize = Math.max(width, height) * 1.4
 
   if (gfx) gfx.remove()
   gfx = createGraphics(width, height)
@@ -46,7 +49,7 @@ function draw() {
     gfx.image(mskImage, 0, 0)
 
     item.size++
-    if (item.size > width * 1.5) {
+    if (item.size > maxSize) {
       item.size = 0
       sections = sections.sort((a, b) => a.size - b.size)
     }
