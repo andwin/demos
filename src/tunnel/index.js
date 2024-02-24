@@ -1,4 +1,4 @@
-let items = []
+let sections = []
 let gfx
 let layer
 let msk
@@ -9,22 +9,22 @@ function setup() {
   layer = createGraphics(width, height)
   msk = createGraphics(width, height)
 
-  items.push({ color: 'green', size: 100 })
-  items.push({ color: 'blue', size: 150 })
-  items.push({ color: 'orange', size: 200 })
-  items.push({ color: 'yellow', size: 250 })
-  items.push({ color: 'red', size: 300 })
-  items.push({ color: 'pink', size: 350 })
-  items.push({ color: 'purple', size: 400 })
-  items.push({ color: 'lightgreen', size: 450 })
-  items.push({ color: 'gray', size: 500 })
+  sections.push({ color: 'green', size: 100 })
+  sections.push({ color: 'blue', size: 150 })
+  sections.push({ color: 'orange', size: 200 })
+  sections.push({ color: 'yellow', size: 250 })
+  sections.push({ color: 'red', size: 300 })
+  sections.push({ color: 'pink', size: 350 })
+  sections.push({ color: 'purple', size: 400 })
+  sections.push({ color: 'lightgreen', size: 450 })
+  sections.push({ color: 'gray', size: 500 })
 }
 
 function draw() {
   gfx.background(220)
   gfx.noFill()
 
-  for (const item of items) {
+  for (const item of sections) {
     const x = 50 * sin(frameCount * 0.01 + item.size * 0.01) + width / 2
     const y = 50 * sin(frameCount * 0.01 + item.size * 0.01) + width / 2
 
@@ -42,7 +42,7 @@ function draw() {
     item.size++
     if (item.size > width * 1.5) {
       item.size = 0
-      items = items.sort((a, b) => a.size - b.size)
+      sections = sections.sort((a, b) => a.size - b.size)
     }
   }
 
