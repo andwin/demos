@@ -4,11 +4,16 @@ let layer
 let msk
 
 function setup() {
-  createCanvas(400, 400)
+  createCanvas(window.innerWidth, window.innerHeight)
+
+  if (gfx) gfx.remove()
   gfx = createGraphics(width, height)
+  if (layer) layer.remove()
   layer = createGraphics(width, height)
+  if (msk) msk.remove()
   msk = createGraphics(width, height)
 
+  sections.length = 0
   sections.push({ color: 'green', size: 100 })
   sections.push({ color: 'blue', size: 150 })
   sections.push({ color: 'orange', size: 200 })
@@ -19,6 +24,7 @@ function setup() {
   sections.push({ color: 'lightgreen', size: 450 })
   sections.push({ color: 'gray', size: 500 })
 }
+window.onresize = setup
 
 function draw() {
   gfx.background(220)
