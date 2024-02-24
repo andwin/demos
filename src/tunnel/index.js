@@ -35,7 +35,7 @@ function draw() {
 
   for (const item of sections) {
     const x = 50 * sin(frameCount * 0.01 + item.size * 0.01) + width / 2
-    const y = 50 * sin(frameCount * 0.01 + item.size * 0.01) + width / 2
+    const y = 50 * sin(frameCount * 0.01 + item.size * 0.01) + height / 2
 
     msk.background(item.color)
     msk.erase()
