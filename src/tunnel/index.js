@@ -1,4 +1,3 @@
-/* global clip */
 let gfx
 let maxSize
 let t = 1.5
