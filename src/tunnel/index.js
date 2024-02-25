@@ -1,3 +1,4 @@
+/* global clip */
 let gfx
 let maxSize
 let t = 1.5
@@ -44,12 +45,13 @@ function draw() {
     const colorIndex = Math.abs((section + colorOffset) % colors.length)
     const color = colors[colorIndex]
 
-    gfx.strokeWeight(5)
-    gfx.stroke(color.inner)
-    gfx.circle(x, y, size)
-
-    gfx.stroke(color.outer)
-    gfx.circle(x, y, size - 10)
+    gfx.push()
+    // eslint-disable-next-line no-loop-func
+    gfx.clip(() => {
+      gfx.circle(x, y, size)
+    }, { invert: true })
+    gfx.background(color.inner)
+    gfx.pop()
 
     if (size > maxSize) {
       t -= 1
