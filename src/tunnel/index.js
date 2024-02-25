@@ -28,14 +28,19 @@ function setup() {
 window.onresize = setup
 
 function draw() {
-  gfx.background(220)
-  gfx.noFill()
-
   t += 0.01
+  let drawBackground = true
 
   for (let section = 0; section < sectionLimit; section++) {
     const sectionT = t - (sectionLimit - section)
     if (sectionT < 0) continue
+
+    if (drawBackground) {
+      drawBackground = false
+      const bgColorIndex = Math.abs((section - 1 + colorOffset) % colors.length)
+      const bgColor = colors[bgColorIndex]
+      gfx.background(bgColor.inner)
+    }
 
     const size = ((maxSize / sectionLimit) * sectionT ** 2) / sectionLimit
 
