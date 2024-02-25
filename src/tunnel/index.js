@@ -3,6 +3,18 @@ let maxSize
 let t = 1.5
 const sectionLimit = 10
 
+const colors = [
+  { inner: 'green', outer: 'lightgreen' },
+  { inner: 'blue', outer: 'lightblue' },
+  { inner: 'orange', outer: 'lightorange' },
+  { inner: 'yellow', outer: 'lightyellow' },
+  { inner: 'red', outer: 'lightred' },
+  { inner: 'pink', outer: 'lightpink' },
+  { inner: 'purple', outer: 'lightpurple' },
+  { inner: 'gray', outer: 'lightgray' },
+]
+let colorOffset = 0
+
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight)
 
@@ -29,10 +41,19 @@ function draw() {
     const x = 50 * sin(frameCount * 0.01 + size * 0.01) + width / 2
     const y = 50 * sin(frameCount * 0.01 + size * 0.01) + height / 2
 
+    const colorIndex = Math.abs((section + colorOffset) % colors.length)
+    const color = colors[colorIndex]
+
+    gfx.strokeWeight(5)
+    gfx.stroke(color.inner)
     gfx.circle(x, y, size)
+
+    gfx.stroke(color.outer)
+    gfx.circle(x, y, size - 10)
 
     if (size > maxSize) {
       t -= 1
+      colorOffset -= 1
     }
   }
 
