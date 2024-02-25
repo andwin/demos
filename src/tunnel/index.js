@@ -23,7 +23,6 @@ function setup() {
   if (gfx) gfx.remove()
   gfx = createGraphics(width, height)
 }
-
 window.onresize = setup
 
 function draw() {
