@@ -1,10 +1,11 @@
-/* eslint-disable no-undef */
+import p5 from 'p5'
+
 const particles = []
 const noiseScale = 0.01
 const speed = 3
 let bgColor
 
-function setup() {
+window.setup = () => {
   bgColor = color('#1A1B3E')
   bgColor.setAlpha(10)
 
@@ -18,9 +19,9 @@ function setup() {
     particles.push(particle)
   }
 }
-window.onresize = setup
+window.onresize = window.setup
 
-function draw() {
+window.draw = () => {
   background(bgColor)
   strokeWeight(3)
   stroke(230)

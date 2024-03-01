@@ -1,3 +1,5 @@
+import p5 from 'p5'
+
 const xSpeed = 2
 const ySpeed = 1
 
@@ -5,7 +7,7 @@ const noiseScale = 0.008
 let t = 0.0
 let graphics
 
-function setup() {
+window.setup = () => {
   createCanvas(window.innerWidth, window.innerHeight)
 
   graphics = createGraphics(window.innerWidth, window.innerHeight)
@@ -13,9 +15,9 @@ function setup() {
 
   initGraphics(graphics)
 }
-window.onresize = setup
+window.onresize = window.setup
 
-function draw() {
+window.draw = () => {
   t += 0.015
 
   graphics.image(graphics, -xSpeed, ySpeed)

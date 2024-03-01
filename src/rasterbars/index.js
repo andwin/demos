@@ -1,17 +1,19 @@
+import p5 from 'p5'
+
 const numberOfBars = 8
 const speed = 0.02
 const dx = 0.5
 let amplitude
 let barHeight
 
-function setup() {
+window.setup = () => {
   createCanvas(window.innerWidth, window.innerHeight)
   amplitude = window.innerHeight / 8
   barHeight = window.innerHeight / numberOfBars / 2
 }
-window.onresize = setup
+window.onresize = window.setup
 
-function draw() {
+window.draw = () => {
   background(10, 9, 12)
 
   for (let i = 0; i < numberOfBars; i++) {

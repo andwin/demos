@@ -1,3 +1,5 @@
+import p5 from 'p5'
+
 let background
 
 const minSpeed = 6
@@ -12,7 +14,7 @@ let wind = 0
 const numberOfDrops = 100
 const drops = []
 
-function setup() {
+window.setup = () => {
   createCanvas(window.innerWidth, window.innerHeight)
   background = createBackground()
 
@@ -23,9 +25,9 @@ function setup() {
     drops.push(drop)
   }
 }
-window.onresize = setup
+window.onresize = window.setup
 
-function draw() {
+window.draw = () => {
   image(background, 0, 0)
 
   stroke(200)

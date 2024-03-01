@@ -1,3 +1,5 @@
+import p5 from 'p5'
+
 let gfx
 let maxSize
 let t = 1.5
@@ -15,7 +17,7 @@ const colors = [
 ]
 let colorOffset = 0
 
-function setup() {
+window.setup = () => {
   createCanvas(window.innerWidth, window.innerHeight)
 
   maxSize = Math.max(width, height) * 1.4
@@ -23,9 +25,9 @@ function setup() {
   if (gfx) gfx.remove()
   gfx = createGraphics(width, height)
 }
-window.onresize = setup
+window.onresize = window.setup
 
-function draw() {
+window.draw = () => {
   t += 0.01
   let drawBackground = true
 

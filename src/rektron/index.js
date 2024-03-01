@@ -1,4 +1,6 @@
 /* eslint-disable no-undef */
+import p5 from 'p5'
+
 let background
 
 const gravityConstant = 1.1
@@ -7,7 +9,7 @@ const logoColor = '#FF7E2C'
 
 const magThreshold = 0.15
 
-function setup() {
+window.setup = () => {
   stroke(0)
   createCanvas(window.innerWidth, window.innerHeight)
   background = createBackground()
@@ -16,9 +18,9 @@ function setup() {
 
   initCircles()
 }
-window.onresize = setup
+window.onresize = window.setup
 
-function draw() {
+window.draw = () => {
   translate(width / 2, height / 2)
 
   drawCircles()

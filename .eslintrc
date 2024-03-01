@@ -6,13 +6,35 @@
   ],
 
   "plugins": [
-    "p5js"
+    "p5js",
+    "@typescript-eslint"
   ],
 
   "env": {
     "browser": true,
     "es2021": true,
     "p5js/p5": true
+  },
+
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "sourceType": "module",
+    "extraFileExtensions": [".svelte"]
+  },
+  "overrides": [
+    {
+      "files": ["*.svelte"],
+      "parser": "svelte-eslint-parser",
+      "parserOptions": {
+        "parser": "@typescript-eslint/parser"
+      }
+    }
+  ],
+
+  "rules": {
+    "no-new": "off",
+    "no-unused-vars": ["error", { "varsIgnorePattern": "p5" }],
+    "import/no-mutable-exports": "off"
   },
 
   "ignorePatterns": [

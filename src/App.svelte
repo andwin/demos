@@ -1,52 +1,34 @@
-<script lang="ts">
+<script>
+  import Card from './Card.svelte'
+
   const demos = [
     {
       title: 'Flow field',
-      link: './src/flowfield/',
+      slug: 'flowfield',
     },
     {
       title: 'Rektron logo',
-      link: './src/rektron/',
+      slug: 'rektron',
     },
     {
       title: 'Boubles',
-      link: './src/boubles/',
+      slug: 'boubles',
     },
     {
       title: 'Map generator',
-      link: './src/map-generator/',
+      slug: 'map-generator',
     },
     {
       title: 'Horizontal raster bars',
-      link: './src/rasterbars/',
+      slug: 'rasterbars',
     },
     {
       title: 'Clouds',
-      link: './src/clouds/',
+      slug: 'clouds',
     },
     {
       title: 'Rain',
-      link: './src/rain/',
-    },
-    {
-      title: 'Lines',
-      link: './src/lines/',
-    },
-    {
-      title: 'Circes',
-      link: './src/circles/',
-    },
-    {
-      title: 'Circes',
-      link: './src/circles/',
-    },
-    {
-      title: 'Circes',
-      link: './src/circles/',
-    },
-    {
-      title: 'Circes',
-      link: './src/circles/',
+      slug: 'rain',
     },
   ]
 </script>
@@ -56,12 +38,7 @@
 
   <div class="cards">
     {#each demos as demo}
-      <div>
-        <a href={demo.link} class="card">
-          <h2>{demo.title}</h2>
-          <img src={`${demo.link}preview.png`} alt={demo.title} />
-        </a>
-      </div>
+      <Card title={demo.title} slug={demo.slug} />
     {/each}
   </div>
 </main>
@@ -78,34 +55,8 @@
     gap: 20px;
   }
 
-  .card {
-    display: inline-block;
-    background-color: #202127;
-    padding: 20px;
-    border-radius: 10px;
-  }
-
   h1 {
     font-size: 3.2em;
     padding-bottom: 60px;
-  }
-
-  h2 {
-    color: #EEE;
-    margin-top: 0;
-  }
-
-  a {
-    color: #CCC;
-    text-decoration: none;
-  }
-  a:hover {
-    text-decoration: underline;
-  }
-
-  img {
-    width: 100%;
-    max-width: 300px;
-    height: auto;
   }
 </style>
