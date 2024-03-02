@@ -1,21 +1,11 @@
 import p5 from 'p5'
 
 let gfx
+let ctx
 let maxSize
 let t = 1.5
 const sectionLimit = 10
-
-const colors = [
-  { inner: 'green', outer: 'lightgreen' },
-  { inner: 'blue', outer: 'lightblue' },
-  { inner: 'orange', outer: 'lightorange' },
-  { inner: 'yellow', outer: 'lightyellow' },
-  { inner: 'red', outer: 'lightred' },
-  { inner: 'pink', outer: 'lightpink' },
-  { inner: 'purple', outer: 'lightpurple' },
-  { inner: 'gray', outer: 'lightgray' },
-]
-let colorOffset = 0
+const circleDots = 100
 
 window.setup = () => {
   createCanvas(window.innerWidth, window.innerHeight)
@@ -24,43 +14,34 @@ window.setup = () => {
 
   if (gfx) gfx.remove()
   gfx = createGraphics(width, height)
+  ctx = gfx.canvas.getContext('2d')
 }
 window.onresize = window.setup
 
 window.draw = () => {
   t += 0.01
-  let drawBackground = true
+
+  gfx.background(0)
+
+  gfx.strokeWeight(3)
+  gfx.stroke(255)
+  gfx.noFill()
 
   for (let section = 0; section < sectionLimit; section++) {
     const sectionT = t - (sectionLimit - section)
-    if (sectionT < 0) continue
 
-    if (drawBackground) {
-      drawBackground = false
-      const bgColorIndex = Math.abs((section - 1 + colorOffset) % colors.length)
-      const bgColor = colors[bgColorIndex]
-      gfx.background(bgColor.inner)
-    }
+    const size = ((maxSize / sectionLimit) * sectionT ** 2.5) / sectionLimit
 
-    const size = ((maxSize / sectionLimit) * sectionT ** 2) / sectionLimit
+    const x = 50 * sin(frameCount * 0.01 + size * 0.003) + width / 2
+    const y = 50 * sin(frameCount * 0.01 + size * 0.003) + height / 2
 
-    const x = 50 * sin(frameCount * 0.01 + size * 0.01) + width / 2
-    const y = 50 * sin(frameCount * 0.01 + size * 0.01) + height / 2
+    const circleLength = Math.PI * 2 * size
+    const dotSpace = circleLength / circleDots
 
-    const colorIndex = Math.abs((section + colorOffset) % colors.length)
-    const color = colors[colorIndex]
-
-    gfx.push()
-    // eslint-disable-next-line no-loop-func
-    gfx.clip(() => {
-      gfx.circle(x, y, size)
-    }, { invert: true })
-    gfx.background(color.inner)
-    gfx.pop()
-
+    ctx.setLineDash([1, dotSpace - 1])
+    gfx.circle(x, y, size)
     if (size > maxSize) {
       t -= 1
-      colorOffset -= 1
     }
   }
 
