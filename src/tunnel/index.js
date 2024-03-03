@@ -32,8 +32,8 @@ window.draw = () => {
 
     const size = ((maxSize / sectionLimit) * sectionT ** 2.5) / sectionLimit
 
-    const x = 50 * sin(frameCount * 0.01 + size * 0.003) + width / 2
-    const y = 50 * sin(frameCount * 0.01 + size * 0.003) + height / 2
+    const x = 50 * sin(frameCount * 0.01 + size * 0.002) + width / 2
+    const y = 50 * sin(frameCount * 0.01 + size * 0.002) + height / 2
 
     const circleLength = Math.PI * 2 * size
     const dotSpace = circleLength / circleDots
