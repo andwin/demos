@@ -3,6 +3,10 @@
 
   const demos = [
     {
+      title: 'Quilt',
+      slug: 'quilt',
+    },
+    {
       title: 'Flow field',
       slug: 'flowfield',
     },
