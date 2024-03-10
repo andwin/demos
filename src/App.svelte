@@ -3,6 +3,10 @@
 
   const demos = [
     {
+      title: 'Random lines',
+      slug: 'random-lines',
+    },
+    {
       title: 'Quilt',
       slug: 'quilt',
     },
