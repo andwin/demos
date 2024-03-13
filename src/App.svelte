@@ -1,44 +1,6 @@
 <script>
   import Card from './Card.svelte'
-
-  const demos = [
-    {
-      title: 'Random lines',
-      slug: 'random-lines',
-    },
-    {
-      title: 'Quilt',
-      slug: 'quilt',
-    },
-    {
-      title: 'Flow field',
-      slug: 'flowfield',
-    },
-    {
-      title: 'Rektron logo',
-      slug: 'rektron',
-    },
-    {
-      title: 'Boubles',
-      slug: 'boubles',
-    },
-    {
-      title: 'Map generator',
-      slug: 'map-generator',
-    },
-    {
-      title: 'Horizontal raster bars',
-      slug: 'rasterbars',
-    },
-    {
-      title: 'Clouds',
-      slug: 'clouds',
-    },
-    {
-      title: 'Rain',
-      slug: 'rain',
-    },
-  ]
+  import demos from './demos.json'
 </script>
 
 <main>
