@@ -21,7 +21,7 @@ window.onresize = window.setup
 window.draw = () => {
   t += 0.01
 
-  gfx.background(0)
+  gfx.background(0, 50)
 
   gfx.strokeWeight(3)
   gfx.stroke(255)
