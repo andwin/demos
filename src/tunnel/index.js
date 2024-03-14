@@ -6,6 +6,7 @@ let maxSize
 let t = 1.5
 const sectionLimit = 10
 const circleDots = 100
+const minSize = 20
 
 window.setup = () => {
   createCanvas(window.innerWidth, window.innerHeight)
@@ -31,6 +32,7 @@ window.draw = () => {
     const sectionT = t - (sectionLimit - section)
 
     const size = ((maxSize / sectionLimit) * sectionT ** 2.5) / sectionLimit
+    if (size < minSize) continue
 
     const x = 50 * sin(frameCount * 0.01 + size * 0.002) + width / 2
     const y = 50 * sin(frameCount * 0.01 + size * 0.002) + height / 2
