@@ -18,6 +18,7 @@ window.setup = () => {
   gfx = createGraphics(width, height)
   gfx.stroke(255)
   gfx.strokeWeight(1)
+  gfx.translate(width / 2, height / 2)
 }
 window.onresize = window.setup
 
@@ -37,13 +38,13 @@ window.draw = () => {
 }
 
 const initStar = (star) => {
-  const x = random(width)
-  const y = random(height)
+  const x = random(-width / 2, width / 2)
+  const y = random(-height / 2, height / 2)
 
   star.current = createVector(x, y)
   star.previous = createVector(x, y)
   star.velocity = createVector(0, 0)
-  star.angle = atan2(y - height / 2, x - width / 2)
+  star.angle = atan2(y, x)
 
   return star
 }
@@ -58,7 +59,7 @@ const moveStar = (star) => {
   star.current.add(star.velocity)
 }
 
-const isOffscreen = star => star.current.x < 0 || star.current.x > width || star.current.y < 0 || star.current.y > height
+const isOffscreen = star => star.current.x < -width / 2 || star.current.x > width / 2 || star.current.y < -height / 2 || star.current.y > height / 2
 
 const drawStar = (star) => {
   gfx.line(star.previous.x, star.previous.y, star.current.x, star.current.y)
