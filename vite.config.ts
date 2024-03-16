@@ -6,7 +6,9 @@ import { sync } from "glob"
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    svelte(),
+    svelte({
+      configFile: '../svelte.config.js',
+    }),
   ],
   base: '/demos/',
   root: path.join(__dirname, "src"),

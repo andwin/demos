@@ -1,6 +1,6 @@
 <script lang="ts">
-  export let title
-  export let slug
+  export let title: string
+  export let slug: string
 </script>
 
 <div class="card">
