@@ -3,7 +3,7 @@ import p5 from 'p5'
 let gfx
 let ctx
 let maxSize
-let t = 1.5
+let t = 1.8
 const sectionLimit = 10
 const circleDots = 100
 const minSize = 20
