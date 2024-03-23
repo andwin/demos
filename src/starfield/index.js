@@ -62,5 +62,7 @@ const moveStar = (star) => {
 const isOffscreen = star => star.current.x < -width / 2 || star.current.x > width / 2 || star.current.y < -height / 2 || star.current.y > height / 2
 
 const drawStar = (star) => {
+  const alpha = map(star.velocity.mag(), 0, 15, 0, 200)
+  gfx.stroke(255, alpha)
   gfx.line(star.previous.x, star.previous.y, star.current.x, star.current.y)
 }
