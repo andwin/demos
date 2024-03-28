@@ -1,6 +1,8 @@
 import p5 from 'p5'
 
 const bgColor = '#1A1B3E'
+let maxLevel = 0
+let increment = 1
 
 window.setup = () => {
   createCanvas(window.innerWidth, window.innerHeight)
@@ -13,9 +15,12 @@ window.draw = () => {
   background(bgColor)
 
   const length = min(width, height) * 0.95
-  const maxLevel = 6
-
   drawLevel(width / 2, height / 2, length, maxLevel)
+
+  maxLevel += increment
+  if (maxLevel >= 6 || maxLevel <= 0) {
+    increment *= -1
+  }
 }
 
 const drawLevel = (x, y, length, level) => {
