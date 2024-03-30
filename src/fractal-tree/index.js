@@ -10,7 +10,7 @@ window.setup = () => {
 
   frameRate(25)
 
-  startLength = min(width, height) / 3
+  startLength = min(width, height) / 3.5
 }
 window.onresize = window.setup
 
