@@ -20,9 +20,9 @@ window.draw = () => {
   strokeWeight(3)
 
   const t = frameCount
-  angle = 1.025 ** -(t) * sin(0.15 * (t - 8)) + 0.6
+  angle = 1.02 ** -(t) * sin(0.1 * (t - 7)) + 0.45
 
-  drawBranch(width / 2, height, startLength, 0, 6)
+  drawBranch(width / 2, height, startLength, 0, 10)
 }
 
 const drawBranch = (x, y, length, startAngle, level) => {
