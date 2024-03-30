@@ -1,4 +1,5 @@
 [
+  { "title": "Fractal Tree", "slug": "fractal-tree" },
   { "title": "Sierpinski Triangle", "slug": "sierpinski-triangle" },
   { "title": "Clock", "slug": "clock" },
   { "title": "Tunnel", "slug": "tunnel" },
