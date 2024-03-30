@@ -2,10 +2,13 @@ import p5 from 'p5'
 
 const angle = 0.6
 const bgColor = '#1A1B3E'
+let startLength
 
 window.setup = () => {
   createCanvas(window.innerWidth, window.innerHeight)
   noLoop()
+
+  startLength = min(width, height) / 3
 }
 window.onresize = window.setup
 
@@ -15,7 +18,7 @@ window.draw = () => {
   stroke(255)
   strokeWeight(3)
 
-  drawBranch(width / 2, height, 250, 0, 6)
+  drawBranch(width / 2, height, startLength, 0, 6)
 }
 
 const drawBranch = (x, y, length, startAngle, level) => {
