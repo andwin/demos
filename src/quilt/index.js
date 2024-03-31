@@ -10,7 +10,7 @@ window.setup = () => {
   drawQuilt()
 }
 window.onresize = window.setup
-window.onmousedown = () => drawQuilt()
+window.touchStarted = () => drawQuilt()
 
 const drawQuilt = () => {
   strokeWeight(3)

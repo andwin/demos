@@ -9,7 +9,7 @@ window.setup = () => {
   drawLines()
 }
 window.onresize = window.setup
-window.onmousedown = () => drawLines()
+window.touchStarted = () => drawLines()
 
 const drawLines = () => {
   background(255)
