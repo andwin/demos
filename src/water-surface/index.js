@@ -25,8 +25,8 @@ window.draw = () => {
 
   for (let x = 0; x < imgWidth; x++) {
     for (let y = 0; y < imgHeight; y++) {
-      const distances = points.map(point => dist(x, y, point.x, point.y)).sort((a, b) => a - b)
-      const nearestDistance = distances[0]
+      const distances = points.map(point => (x - point.x) ** 2 + (y - point.y) ** 2).sort((a, b) => a - b)
+      const nearestDistance = Math.sqrt(distances[0])
 
       const r = (nearestDistance / 14.5) ** 2.5 + 44
       const g = (nearestDistance / 21) ** 2.5 + 169
