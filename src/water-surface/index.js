@@ -7,6 +7,7 @@ const pixelSize = 2
 const initialPoints = []
 let precalculatedPixels
 const animationFrames = 30
+const gridSpacing = 110
 
 window.setup = () => {
   frameRate(25)
@@ -16,7 +17,11 @@ window.setup = () => {
   imgHeight = ceil(height / pixelSize)
   img = createImage(imgWidth, imgHeight)
 
-  const gridSpacing = 110
+  preCalculateAnimationFrames()
+}
+window.onresize = window.setup
+
+const preCalculateAnimationFrames = () => {
   for (let x = 0; x < imgWidth; x += gridSpacing) {
     for (let y = 0; y < imgHeight; y += gridSpacing) {
       const px = random(x, x + gridSpacing)
@@ -56,7 +61,6 @@ window.setup = () => {
     }
   }
 }
-window.onresize = window.setup
 
 window.draw = () => {
   const animationFrame = frameCount % animationFrames
