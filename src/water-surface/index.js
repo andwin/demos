@@ -5,6 +5,7 @@ let imgWidth
 let imgHeight
 const pixelSize = 2
 const points = []
+const precalculatedPixels = []
 
 window.setup = () => {
   createCanvas(window.innerWidth, window.innerHeight)
@@ -17,11 +18,6 @@ window.setup = () => {
     const point = createVector(random(imgWidth), random(imgHeight))
     points.push(point)
   }
-}
-window.onresize = window.setup
-
-window.draw = () => {
-  img.loadPixels()
 
   for (let x = 0; x < imgWidth; x++) {
     for (let y = 0; y < imgHeight; y++) {
@@ -34,11 +30,20 @@ window.draw = () => {
 
       const index = (x + y * imgWidth) * 4
 
-      img.pixels[index + 0] = r
-      img.pixels[index + 1] = g
-      img.pixels[index + 2] = b
-      img.pixels[index + 3] = 255
+      precalculatedPixels[index + 0] = r
+      precalculatedPixels[index + 1] = g
+      precalculatedPixels[index + 2] = b
+      precalculatedPixels[index + 3] = 255
     }
+  }
+}
+window.onresize = window.setup
+
+window.draw = () => {
+  img.loadPixels()
+
+  for (let i = 0; i < precalculatedPixels.length; i++) {
+    img.pixels[i] = precalculatedPixels[i]
   }
 
   img.updatePixels()
