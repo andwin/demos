@@ -9,6 +9,8 @@ let precalculatedPixels
 const animationFrames = 30
 
 window.setup = () => {
+  frameRate(25)
+
   createCanvas(window.innerWidth, window.innerHeight)
   imgWidth = ceil(width / pixelSize)
   imgHeight = ceil(height / pixelSize)
