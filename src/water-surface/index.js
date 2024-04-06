@@ -16,10 +16,14 @@ window.setup = () => {
   imgHeight = ceil(height / pixelSize)
   img = createImage(imgWidth, imgHeight)
 
-  const numberOfPoints = (width * height) / 50000
-  for (let i = 0; i < numberOfPoints; i++) {
-    const point = createVector(random(imgWidth), random(imgHeight))
-    initialPoints.push(point)
+  const gridSpacing = 110
+  for (let x = 0; x < imgWidth; x += gridSpacing) {
+    for (let y = 0; y < imgHeight; y += gridSpacing) {
+      const px = random(x, x + gridSpacing)
+      const py = random(y, y + gridSpacing)
+      const point = createVector(px, py)
+      initialPoints.push(point)
+    }
   }
 
   precalculatedPixels = new Array(animationFrames)
