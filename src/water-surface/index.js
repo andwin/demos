@@ -4,7 +4,6 @@ let img
 let imgWidth
 let imgHeight
 const pixelSize = 2
-const numPoints = 20
 const points = []
 
 window.setup = () => {
@@ -13,7 +12,8 @@ window.setup = () => {
   imgHeight = ceil(height / pixelSize)
   img = createImage(imgWidth, imgHeight)
 
-  for (let i = 0; i < numPoints; i++) {
+  const numberOfPoints = (width * height) / 50000
+  for (let i = 0; i < numberOfPoints; i++) {
     const point = createVector(random(imgWidth), random(imgHeight))
     points.push(point)
   }
