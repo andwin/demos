@@ -3,11 +3,11 @@ import p5 from 'p5'
 let img
 let imgWidth
 let imgHeight
-const pixelSize = 2
+const pixelSize = 4
 const initialPoints = []
 let precalculatedPixels
 const animationFrames = 30
-const gridSpacing = 110
+const gridSpacing = 50
 
 window.setup = () => {
   frameRate(25)
@@ -47,9 +47,9 @@ const preCalculateAnimationFrames = () => {
         const distances = points.map(point => (x - point.x) ** 2 + (y - point.y) ** 2).sort((a, b) => a - b)
         const nearestDistance = Math.sqrt(distances[0])
 
-        const r = (nearestDistance / 14.5) ** 2.5 + 44
-        const g = (nearestDistance / 21) ** 2.5 + 169
-        const b = (nearestDistance / 40) ** 3.0 + 225
+        const r = (nearestDistance / 7.25) ** 2.5 + 44
+        const g = (nearestDistance / 10.5) ** 2.5 + 169
+        const b = (nearestDistance / 20) ** 3.0 + 225
 
         const index = (x + y * imgWidth) * 4
 
