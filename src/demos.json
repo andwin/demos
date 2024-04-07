@@ -1,4 +1,5 @@
 [
+  { "title": "Water surface", "slug": "water-surface" },
   { "title": "Fractal Tree", "slug": "fractal-tree" },
   { "title": "Sierpinski Triangle", "slug": "sierpinski-triangle" },
   { "title": "Clock", "slug": "clock" },
