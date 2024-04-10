@@ -30,5 +30,5 @@ const drawLevel = (x, y, diameter, levelAngle, level) => {
   const x2 = cos(levelAngle) * (diameter / 4)
   const y2 = sin(levelAngle) * (diameter / 4)
 
-  drawLevel(x + x2, y + y2, diameter / 2, angle * 2, ++level)
+  drawLevel(x + x2, y + y2, diameter / 2, levelAngle * 2, ++level)
 }
