@@ -5,9 +5,9 @@ let angle = 0
 const backgroundColor = '#C0FDFB'
 const colors = {
   0: '#57737A',
-  1: '#B68F40',
-  2: '#B07C9E',
-  3: '#C9F299 ',
+  1: '#FF7E2C',
+  2: '#AEBC98',
+  3: '#FED8A8 ',
   4: '#D8D8F6',
 }
 
