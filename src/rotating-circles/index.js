@@ -2,14 +2,13 @@ import p5 from 'p5'
 
 const maxLevel = 5
 let angle = 0
-const backgroundColor = '#FFFFFF'
+const backgroundColor = '#C0FDFB'
 const colors = {
-  0: '#FF0000',
-  1: '#00FF00',
-  2: '#0000FF',
-  3: '#FFFF00',
-  4: '#FF00FF',
-  5: '#00FFFF',
+  0: '#57737A',
+  1: '#B68F40',
+  2: '#B07C9E',
+  3: '#C9F299 ',
+  4: '#D8D8F6',
 }
 
 window.setup = () => {
