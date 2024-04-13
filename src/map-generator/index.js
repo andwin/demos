@@ -22,6 +22,7 @@ window.draw = () => {
 
   graphics.image(graphics, -xSpeed, ySpeed)
 
+  graphics.loadPixels()
   for (let x = 0; x < width; x++) {
     drawPixel(graphics, x, 0)
   }
