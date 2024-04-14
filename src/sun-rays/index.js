@@ -5,7 +5,9 @@ const startAngle = 0
 
 window.setup = () => {
   createCanvas(window.innerWidth, window.innerHeight)
+  noStroke()
 }
+
 window.onresize = window.setup
 
 window.draw = () => {
