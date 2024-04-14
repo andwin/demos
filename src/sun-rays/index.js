@@ -30,5 +30,7 @@ window.draw = () => {
     endShape(CLOSE)
   }
 
+  circle(0, 0, 50)
+
   startAngle += 0.01
 }
