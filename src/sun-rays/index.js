@@ -1,7 +1,7 @@
 import p5 from 'p5'
 
 const segments = 15
-const startAngle = 0
+let startAngle = 0
 
 window.setup = () => {
   createCanvas(window.innerWidth, window.innerHeight)
@@ -29,4 +29,6 @@ window.draw = () => {
     vertex(x2, y2)
     endShape(CLOSE)
   }
+
+  startAngle += 0.01
 }
