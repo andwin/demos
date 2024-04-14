@@ -12,7 +12,10 @@ window.onresize = window.setup
 
 window.draw = () => {
   background(220)
-  translate(width / 2, height / 2)
+
+  const centerX = (width / 20) * cos(frameCount * 0.015)
+  const centerY = (height / 20) * sin(frameCount * 0.01)
+  translate(width / 2 + centerX, height / 2 + centerY)
 
   const length = dist(0, 0, width / 2, height / 2) * 1.2
 
