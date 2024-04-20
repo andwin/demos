@@ -7,6 +7,8 @@ const backgroundColor = '#ffa733'
 const gradientColor1 = '#f8e7b4'
 const gradientColor2 = '#f2b30b'
 
+let centerCircleSize
+
 window.setup = () => {
   createCanvas(window.innerWidth, window.innerHeight)
   noStroke()
@@ -16,6 +18,8 @@ window.setup = () => {
   gradient.addColorStop(0, gradientColor1)
   gradient.addColorStop(1, gradientColor2)
   ctx.fillStyle = gradient
+
+  centerCircleSize = Math.max(width, height) / 18
 }
 window.onresize = window.setup
 
@@ -42,7 +46,7 @@ window.draw = () => {
     endShape(CLOSE)
   }
 
-  circle(0, 0, 50)
+  circle(0, 0, centerCircleSize)
 
   startAngle += 0.01
 }
