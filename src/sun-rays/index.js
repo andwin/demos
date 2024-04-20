@@ -3,15 +3,24 @@ import p5 from 'p5'
 const segments = 15
 let startAngle = 0
 
+const backgroundColor = '#ffa733'
+const gradientColor1 = '#f8e7b4'
+const gradientColor2 = '#f2b30b'
+
 window.setup = () => {
   createCanvas(window.innerWidth, window.innerHeight)
   noStroke()
-}
 
+  const ctx = canvas.getContext('2d')
+  const gradient = ctx.createRadialGradient(0, 0, width / 12, 0, 0, width / 1.4)
+  gradient.addColorStop(0, gradientColor1)
+  gradient.addColorStop(1, gradientColor2)
+  ctx.fillStyle = gradient
+}
 window.onresize = window.setup
 
 window.draw = () => {
-  background(220)
+  background(backgroundColor)
 
   const centerX = (width / 20) * cos(frameCount * 0.015)
   const centerY = (height / 20) * sin(frameCount * 0.01)
