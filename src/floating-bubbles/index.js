@@ -20,6 +20,8 @@ window.setup = () => {
     bubble.y = random(0, height)
     bubbles.push(bubble)
   }
+
+  sortBobbles()
 }
 window.onresize = window.setup
 
@@ -36,6 +38,10 @@ const initBouble = (bubble) => {
   bubble.y = 0
   bubble.size = random(sizes)
   bubble.color = random(colors)
+}
+
+const sortBobbles = () => {
+  bubbles.sort((a, b) => a.size - b.size)
 }
 
 const drawBouble = (bubble) => {
