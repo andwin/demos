@@ -30,13 +30,19 @@ window.draw = () => {
 
   for (const bubble of bubbles) {
     drawBouble(bubble)
+    moveBouble(bubble)
+
+    if (outOfScreen(bubble)) {
+      initBouble(bubble)
+    }
   }
 }
 
 const initBouble = (bubble) => {
+  const size = random(sizes)
   bubble.x = random(0, width)
-  bubble.y = 0
-  bubble.size = random(sizes)
+  bubble.y = height + size
+  bubble.size = size
   bubble.color = random(colors)
 }
 
@@ -48,3 +54,9 @@ const drawBouble = (bubble) => {
   fill(bubble.color)
   circle(bubble.x, bubble.y, bubble.size)
 }
+
+const moveBouble = (bubble) => {
+  bubble.y--
+}
+
+const outOfScreen = bubble => bubble.y + bubble.size / 2 < 0
