@@ -40,10 +40,13 @@ window.draw = () => {
 
 const initBouble = (bubble) => {
   const size = random(sizes)
+
   bubble.x = random(0, width)
   bubble.y = height + size
   bubble.size = size
   bubble.color = random(colors)
+
+  bubble.blur = map(size, 20, 100, 6, 4)
 }
 
 const sortBobbles = () => {
@@ -51,8 +54,7 @@ const sortBobbles = () => {
 }
 
 const drawBouble = (bubble) => {
-  const blur = map(bubble.size, 20, 100, 6, 4)
-  drawingContext.filter = `blur(${blur}px)`
+  drawingContext.filter = `blur(${bubble.blur}px)`
   fill(bubble.color)
   circle(bubble.x, bubble.y, bubble.size)
 }
