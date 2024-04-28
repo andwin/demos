@@ -56,7 +56,8 @@ const drawBouble = (bubble) => {
 }
 
 const moveBouble = (bubble) => {
-  bubble.y--
+  const speed = map(bubble.size, 20, 100, 0.5, 1)
+  bubble.y -= speed
 }
 
 const outOfScreen = bubble => bubble.y + bubble.size / 2 < 0
