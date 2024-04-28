@@ -47,6 +47,7 @@ const initBouble = (bubble) => {
   bubble.color = random(colors)
 
   bubble.blur = map(size, 20, 100, 6, 4)
+  bubble.speed = map(size, 20, 100, 0.5, 1)
 }
 
 const sortBobbles = () => {
@@ -60,8 +61,7 @@ const drawBouble = (bubble) => {
 }
 
 const moveBouble = (bubble) => {
-  const speed = map(bubble.size, 20, 100, 0.5, 1)
-  bubble.y -= speed
+  bubble.y -= bubble.speed
 }
 
 const outOfScreen = bubble => bubble.y + bubble.size / 2 < 0
