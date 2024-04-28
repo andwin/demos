@@ -41,13 +41,15 @@ window.draw = () => {
 const initBouble = (bubble) => {
   const size = random(sizes)
 
-  bubble.x = random(0, width)
+  bubble.startX = random(0, width)
+  bubble.x = bubble.startX
   bubble.y = height + size
   bubble.size = size
   bubble.color = random(colors)
 
   bubble.blur = map(size, 20, 100, 6, 4)
   bubble.speed = map(size, 20, 100, 0.5, 1)
+  bubble.initialCurvePosition = random(0, 2 * PI)
 }
 
 const sortBobbles = () => {
@@ -62,6 +64,7 @@ const drawBouble = (bubble) => {
 
 const moveBouble = (bubble) => {
   bubble.y -= bubble.speed
+  bubble.x = bubble.startX + sin(bubble.initialCurvePosition + (bubble.y / height) * PI) * bubble.size
 }
 
 const outOfScreen = bubble => bubble.y + bubble.size / 2 < 0
