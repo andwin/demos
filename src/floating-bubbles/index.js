@@ -51,6 +51,8 @@ const sortBobbles = () => {
 }
 
 const drawBouble = (bubble) => {
+  const blur = map(bubble.size, 20, 100, 6, 4)
+  drawingContext.filter = `blur(${blur}px)`
   fill(bubble.color)
   circle(bubble.x, bubble.y, bubble.size)
 }
