@@ -14,6 +14,7 @@ window.setup = () => {
 
   noStroke()
 
+  bubbles.length = 0
   for (let i = 0; i < numberOfBoubles; i++) {
     const bubble = {}
     initBouble(bubble)
