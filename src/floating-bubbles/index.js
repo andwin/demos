@@ -4,7 +4,7 @@ const backgroundColor = '#382317'
 const colors = ['#F4B5B1', '#982A44', '#E56173', '#F5B16C']
 const sizes = []
 const bubbles = []
-const numberOfBoubles = 10
+const numberOfBobbles = 10
 
 window.setup = () => {
   createCanvas(window.innerWidth, window.innerHeight)
@@ -15,7 +15,7 @@ window.setup = () => {
   noStroke()
 
   bubbles.length = 0
-  for (let i = 0; i < numberOfBoubles; i++) {
+  for (let i = 0; i < numberOfBobbles; i++) {
     const bubble = {}
     initBouble(bubble)
     bubble.y = random(0, height)
