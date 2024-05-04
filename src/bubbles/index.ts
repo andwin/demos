@@ -6,20 +6,20 @@ let background: Graphics
 const gravityConstant = 0.9
 const forceConstant = 600
 
-const numberOfBoubles = 30
-type Bouble = {
+const numberOfBubbles = 30
+type Bubble = {
   position: Vector
   size: number
   color: string
   force: Vector
 }
-const boubles: Bouble[] = []
+const bubbles: Bubble[] = []
 const sizes = [20, 40, 60]
 const colors = ['#FF7E2C', '#AEBC98', '#FED8A8']
 
 const magThreshold = 0.15
-const createBoublesInterval = 200
-let createBoublesIntervalId: number | undefined
+const createBubblesInterval = 200
+let createBubblesIntervalId: number | undefined
 const resetBooublesTimeout = 1000
 let resetBooublesTimeoutId: number | undefined
 
@@ -31,7 +31,7 @@ const sketch = (p5: P5) => {
 
     p5.frameRate(20)
 
-    initBoubles()
+    initBubbles()
   }
   window.onresize = p5.setup
 
@@ -41,7 +41,7 @@ const sketch = (p5: P5) => {
     applyForces()
 
     let maxMag = 0
-    for (const bouble of boubles) {
+    for (const bouble of bubbles) {
       drawBouble(bouble)
       const mag = moveBouble(bouble)
       if (mag > maxMag) maxMag = mag
@@ -49,7 +49,7 @@ const sketch = (p5: P5) => {
 
     if (maxMag < magThreshold) {
       if (!resetBooublesTimeoutId) {
-        resetBooublesTimeoutId = window.setTimeout(initBoubles, resetBooublesTimeout)
+        resetBooublesTimeoutId = window.setTimeout(initBubbles, resetBooublesTimeout)
       }
     } else if (resetBooublesTimeoutId) {
       clearTimeout(resetBooublesTimeoutId)
@@ -57,17 +57,17 @@ const sketch = (p5: P5) => {
     }
   }
 
-  const initBoubles = () => {
-    boubles.length = 0
+  const initBubbles = () => {
+    bubbles.length = 0
 
-    if (createBoublesIntervalId) clearInterval(createBoublesIntervalId)
+    if (createBubblesIntervalId) clearInterval(createBubblesIntervalId)
 
-    createBoublesIntervalId = window.setInterval(() => {
-      if (boubles.length < numberOfBoubles) {
+    createBubblesIntervalId = window.setInterval(() => {
+      if (bubbles.length < numberOfBubbles) {
         const bouble = createBouble()
-        boubles.push(bouble)
+        bubbles.push(bouble)
       }
-    }, createBoublesInterval)
+    }, createBubblesInterval)
   }
 
   const createBouble = () => {
@@ -75,7 +75,7 @@ const sketch = (p5: P5) => {
 
     const x = p5.random(p5.width / 2 - p5.width * f, p5.width / 2 + p5.width * f)
     const y = p5.random(p5.height / 2 - p5.height * f, p5.height / 2 + p5.height * f)
-    const bouble: Bouble = {
+    const bouble: Bubble = {
       position: p5.createVector(x, y),
       force: p5.createVector(0, 0),
       size: p5.random(sizes),
@@ -87,12 +87,12 @@ const sketch = (p5: P5) => {
   const applyForces = () => {
     const center = p5.createVector(p5.width / 2, p5.height / 2)
 
-    for (const bouble of boubles) {
+    for (const bouble of bubbles) {
       bouble.force = center.copy().sub(bouble.position).mult(gravityConstant)
     }
 
-    for (const bouble of boubles) {
-      for (const other of boubles) {
+    for (const bouble of bubbles) {
+      for (const other of bubbles) {
         if (bouble === other) continue
 
         const direction = other.position.copy().sub(bouble.position)
@@ -104,12 +104,12 @@ const sketch = (p5: P5) => {
     }
   }
 
-  const drawBouble = (bouble: Bouble) => {
+  const drawBouble = (bouble: Bubble) => {
     p5.fill(bouble.color)
     p5.ellipse(bouble.position.x, bouble.position.y, bouble.size)
   }
 
-  const moveBouble = (bouble: Bouble) => {
+  const moveBouble = (bouble: Bubble) => {
     const force = bouble.force.copy()
     const velocity = force.copy().div(bouble.size / 2)
     bouble.position.add(velocity)
