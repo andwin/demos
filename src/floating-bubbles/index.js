@@ -5,14 +5,19 @@ const colors = ['#F4B5B1', '#982A44', '#E56173', '#F5B16C']
 const sizes = []
 const bubbles = []
 let numberOfBobbles
+let maxSize
+let minSize
 
 window.setup = () => {
   createCanvas(window.innerWidth, window.innerHeight)
 
-  numberOfBobbles = Math.floor(max(width, height) / 50)
+  numberOfBobbles = Math.floor(Math.max(width, height) / 50)
+  maxSize = Math.min(width, height) / 5
+  minSize = Math.min(width, height) / 10
 
   sizes.lenght = 0
-  sizes.push(100, 60, 20)
+  sizes.length = 0
+  sizes.push(minSize, minSize + (maxSize - minSize) * 0.6, maxSize)
 
   noStroke()
 
@@ -50,8 +55,8 @@ const initBouble = (bubble) => {
   bubble.size = size
   bubble.color = random(colors)
 
-  bubble.blur = map(size, 20, 100, 6, 4)
-  bubble.speed = map(size, 20, 100, 0.5, 1)
+  bubble.blur = map(size, minSize, maxSize, 6, 4)
+  bubble.speed = map(size, minSize, maxSize, 0.5, 1)
   bubble.initialCurvePosition = random(0, 2 * PI)
 }
 
