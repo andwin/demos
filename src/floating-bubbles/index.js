@@ -4,10 +4,12 @@ const backgroundColor = '#382317'
 const colors = ['#F4B5B1', '#982A44', '#E56173', '#F5B16C']
 const sizes = []
 const bubbles = []
-const numberOfBobbles = 10
+let numberOfBobbles
 
 window.setup = () => {
   createCanvas(window.innerWidth, window.innerHeight)
+
+  numberOfBobbles = Math.floor(max(width, height) / 50)
 
   sizes.lenght = 0
   sizes.push(100, 60, 20)
