@@ -56,7 +56,7 @@ const initBouble = (bubble) => {
   bubble.size = size
   bubble.color = random(colors)
 
-  bubble.blur = map(size, minSize, maxSize, 6, 4)
+  bubble.blur = map(size, minSize, maxSize, 5, 3)
   bubble.speed = map(size, minSize, maxSize, 0.5, 1)
   bubble.initialCurvePosition = random(0, 2 * PI)
 }
