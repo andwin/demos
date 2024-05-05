@@ -42,6 +42,7 @@ window.draw = () => {
 
     if (outOfScreen(bubble)) {
       initBouble(bubble)
+      sortBobbles()
     }
   }
 }
