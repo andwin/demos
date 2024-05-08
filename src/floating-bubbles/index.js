@@ -9,6 +9,8 @@ let maxSize
 let minSize
 
 window.setup = () => {
+  pixelDensity(1)
+
   createCanvas(window.innerWidth, window.innerHeight)
 
   numberOfBobbles = Math.floor(Math.max(width, height) / 50)
