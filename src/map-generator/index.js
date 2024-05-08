@@ -4,7 +4,7 @@ const xSpeed = 2
 const ySpeed = 1
 
 const noiseScale = 0.008
-let t = 0.0
+let t = 100.0
 let graphics
 
 window.setup = () => {
