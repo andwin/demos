@@ -18,7 +18,6 @@ window.setup = () => {
   minSize = Math.min(width, height) / 10
 
   sizes.lenght = 0
-  sizes.length = 0
   sizes.push(minSize, minSize + (maxSize - minSize) * 0.6, maxSize)
 
   noStroke()
